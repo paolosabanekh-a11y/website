@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paolo Sabanekh | Coder & Game Dev</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="pixel-text">PAOLO.EXE</span>
+    </div>
+    <div class="nav-links">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#pixel-fighters" class="nav-link">Pixel Fighters</a>
+      <a href="#mini-games" class="nav-link">Mini Games</a>
+    </div>
+    <button id="menu-btn" class="menu-btn" title="All Projects">☰ Projects</button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════ PROJECTS DRAWER -->
+  <div id="projects-drawer" class="drawer hidden">
+    <div class="drawer-header">
+      <h2 class="pixel-text">MY PROJECTS</h2>
+      <button id="close-drawer" class="close-btn">✕</button>
+    </div>
+    <div class="drawer-grid">
+      <div class="project-card" data-target="pixel-fighters">
+        
+        <h3>Pixel Fighters</h3>
+        <p>Super Smash Bros style fighting game with 5 unique characters</p>
+        <span class="tag">Game</span>
+        <span class="tag">JavaScript</span>
+      </div>
+      <div class="project-card" data-target="mini-games">
+        <div class="project-icon">🎮</div>
+        <h3>Mini Games Hub</h3>
+        <p>Collection of fun browser mini-games</p>
+        <span class="tag">Games</span>
+        <span class="tag">HTML5</span>
+      </div>
+      <div class="project-card coming-soon">
+        <div class="project-icon">🚀</div>
+        <h3>Space Shooter</h3>
+        <p>Coming soon...</p>
+        <span class="tag">Coming Soon</span>
+      </div>
+      <div class="project-card coming-soon">
+        <div class="project-icon">🌐</div>
+        <h3>Web App</h3>
+        <p>Coming soon...</p>
+        <span class="tag">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+  <div id="drawer-overlay" class="overlay hidden"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ SECRET CUSTOMIZER -->
+  <div id="customizer" class="customizer hidden">
+    <div class="customizer-header">
+      <span class="pixel-text">🎨 SECRET PANEL</span>
+      <button id="close-customizer" class="close-btn">✕</button>
+    </div>
+    <div class="customizer-body">
+      <div class="custom-section">
+        <label>Theme Color</label>
+        <div class="color-swatches">
+          <button class="swatch" data-color="cyan" style="background:#00f5ff"></button>
+          <button class="swatch" data-color="purple" style="background:#bf00ff"></button>
+          <button class="swatch" data-color="green" style="background:#00ff88"></button>
+          <button class="swatch" data-color="red" style="background:#ff3355"></button>
+          <button class="swatch" data-color="gold" style="background:#ffd700"></button>
+          <button class="swatch" data-color="orange" style="background:#ff6600"></button>
+        </div>
+      </div>
+      <div class="custom-section">
+        <label>Background Style</label>
+        <div class="bg-options">
+          <button class="bg-btn active" data-bg="stars">⭐ Stars</button>
+          <button class="bg-btn" data-bg="grid">▦ Grid</button>
+          <button class="bg-btn" data-bg="waves">〰 Waves</button>
+          <button class="bg-btn" data-bg="matrix">⬛ Matrix</button>
+        </div>
+      </div>
+      <div class="custom-section">
+        <label>Font Style</label>
+        <div class="font-options">
+          <button class="font-btn active" data-font="pixel">Pixel</button>
+          <button class="font-btn" data-font="orbitron">Orbitron</button>
+          <button class="font-btn" data-font="rajdhani">Rajdhani</button>
+        </div>
+      </div>
+      <div class="custom-section">
+        <label>Particle Effects</label>
+        <label class="toggle-label">
+          <input type="checkbox" id="particles-toggle" checked />
+          <span class="toggle-slider"></span>
+          <span>Enabled</span>
+        </label>
+      </div>
+      <div class="custom-section">
+        <label>Scanlines Effect</label>
+        <label class="toggle-label">
+          <input type="checkbox" id="scanlines-toggle" />
+          <span class="toggle-slider"></span>
+          <span>Enabled</span>
+        </label>
+      </div>
+    </div>
+    <div class="customizer-footer">
+      <small>Secret Panel — Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> to toggle</small>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ SCANLINES OVERLAY -->
+  <div id="scanlines" class="scanlines hidden"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ HERO SECTION -->
+  <section id="home" class="hero">
+    <canvas id="bg-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge">8TH GRADE CODER</div>
+      <h1 class="hero-title">
+        <span class="glitch" data-text="PAOLO">PAOLO</span>
+        <br/>
+        <span class="glitch accent" data-text="SABANEKH">SABANEKH</span>
+      </h1>
+      <p class="hero-sub">Game Developer · Coder · The Village School</p>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <span class="stat-num">14</span>
+          <span class="stat-label">Years Old</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">8th</span>
+          <span class="stat-label">Grade</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">5</span>
+          <span class="stat-label">Characters</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">Ideas</span>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#pixel-fighters" class="btn btn-primary">▶ Play Pixel Fighters</a>
+        <a href="#projects" class="btn btn-secondary">View Projects</a>
+      </div>
+    </div>
+    <div class="scroll-hint">↓ Scroll Down ↓</div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ ABOUT SECTION -->
+  <section id="about" class="section about-section">
+    <div class="section-inner">
+      <h2 class="section-title pixel-text">ABOUT ME</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-avatar">
+            <div class="pixel-avatar">
+              <div class="pa-head"></div>
+              <div class="pa-body"></div>
+              <div class="pa-legs"></div>
+            </div>
+          </div>
+          <div class="about-info">
+            <h3>Hey, I'm Paolo! 👋</h3>
+            <p>I'm a 14-year-old 8th grader at <strong>The Village School</strong> who loves coding and making games. I built Pixel Fighters — a Super Smash Bros style fighting game — completely from scratch!</p>
+            <p>I'm passionate about game development, web design, and creating cool interactive experiences. This is my personal hub where you can play my games and see what I'm building.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Game Dev</span>
+              <span class="skill-tag">HTML/CSS</span>
+              <span class="skill-tag">Pygame</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ PROJECTS SECTION -->
+  <section id="projects" class="section projects-section">
+    <div class="section-inner">
+      <h2 class="section-title pixel-text">MY PROJECTS</h2>
+      <div class="projects-grid">
+        <div class="proj-card featured" onclick="scrollToSection('pixel-fighters')">
+          <div class="proj-glow"></div>
+          <div class="proj-icon-big">⚔️</div>
+          <h3>Pixel Fighters</h3>
+          <p>A Super Smash Bros style fighting game with 5 unique characters, special moves, projectiles, and particle effects. Built with Python/Pygame and ported to the browser!</p>
+          <div class="proj-tags">
+            <span class="tag">Featured</span>
+            <span class="tag">Game</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <button class="btn btn-primary small">Play Now ▶</button>
+        </div>
+        <div class="proj-card" onclick="scrollToSection('mini-games')">
+          <div class="proj-icon-big">🎮</div>
+          <h3>Mini Games Hub</h3>
+          <p>A collection of fun browser mini-games including Snake, Reaction Test, and more!</p>
+          <div class="proj-tags">
+            <span class="tag">Games</span>
+            <span class="tag">HTML5</span>
+          </div>
+          <button class="btn btn-secondary small">Play ▶</button>
+        </div>
+        <div class="proj-card locked">
+          <div class="proj-icon-big">🚀</div>
+          <h3>Space Shooter</h3>
+          <p>Coming soon — a top-down space shooter with waves of enemies!</p>
+          <div class="proj-tags">
+            <span class="tag">Coming Soon</span>
+          </div>
+          <button class="btn btn-ghost small" disabled>🔒 Locked</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ PIXEL FIGHTERS SECTION -->
+  <section id="pixel-fighters" class="section game-section">
+    <div class="section-inner wide">
+      <h2 class="section-title pixel-text">⚔️ PIXEL FIGHTERS</h2>
+      <p class="section-sub">Super Smash Bros style — Choose your fighter and battle!</p>
+
+      <div id="pf-wrapper">
+        <!-- CHARACTER SELECT -->
+        <div id="pf-char-select" class="pf-screen">
+          <h3 class="pixel-text">SELECT YOUR FIGHTERS</h3>
+          <div class="char-select-grid">
+            <div class="player-select" id="p1-select">
+              <h4>PLAYER 1 <small>(WASD + F/G)</small></h4>
+              <div class="char-cards" id="p1-chars"></div>
+              <div class="selected-preview" id="p1-preview">Choose a fighter!</div>
+            </div>
+            <div class="vs-divider">VS</div>
+            <div class="player-select" id="p2-select">
+              <h4>PLAYER 2 <small>(Arrows + K/L)</small></h4>
+              <div class="char-cards" id="p2-chars"></div>
+              <div class="selected-preview" id="p2-preview">Choose a fighter!</div>
+            </div>
+          </div>
+          <button id="pf-start-btn" class="btn btn-primary big" disabled>START FIGHT!</button>
+          <div class="controls-info">
+            <div class="ctrl-col">
+              <strong>Player 1:</strong> A/D Move · W Jump · F Attack · G Special (hold)
+            </div>
+            <div class="ctrl-col">
+              <strong>Player 2:</strong> ←/→ Move · ↑ Jump · K Attack · L Special (hold)
+            </div>
+          </div>
+        </div>
+
+        <!-- GAME CANVAS -->
+        <div id="pf-game" class="pf-screen hidden">
+          <canvas id="pf-canvas" width="900" height="550"></canvas>
+          <div class="pf-controls-bar">
+            <span>ESC = Pause</span>
+            <button id="pf-quit-btn" class="btn btn-secondary small">Quit to Menu</button>
+          </div>
+        </div>
+
+        <!-- WIN SCREEN -->
+        <div id="pf-win" class="pf-screen hidden">
+          <div class="win-content">
+            <div class="win-trophy">🏆</div>
+            <h2 class="pixel-text" id="win-text">PLAYER WINS!</h2>
+            <div id="win-fireworks"></div>
+            <button id="pf-rematch-btn" class="btn btn-primary big">REMATCH!</button>
+            <button id="pf-menu-btn" class="btn btn-secondary big">Main Menu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ MINI GAMES SECTION -->
+  <section id="mini-games" class="section mini-section">
+    <div class="section-inner">
+      <h2 class="section-title pixel-text">🎮 MINI GAMES</h2>
+      <p class="section-sub">Take a break and play some quick games!</p>
+
+      <div class="mini-tabs">
+        <button class="mini-tab active" data-game="snake">🐍 Snake</button>
+        <button class="mini-tab" data-game="reaction">⚡ Reaction Test</button>
+        <button class="mini-tab" data-game="memory">🧠 Memory Match</button>
+        <button class="mini-tab" data-game="dodge">💥 Dodge!</button>
+      </div>
+
+      <div class="mini-game-area">
+        <!-- SNAKE -->
+        <div id="game-snake" class="mini-game active">
+          <div class="game-hud">
+            <span>Score: <strong id="snake-score">0</strong></span>
+            <span>High Score: <strong id="snake-hi">0</strong></span>
+            <button id="snake-start" class="btn btn-primary small">Start</button>
+          </div>
+          <canvas id="snake-canvas" width="400" height="400"></canvas>
+          <p class="game-hint">Arrow keys or WASD to move</p>
+        </div>
+
+        <!-- REACTION TEST -->
+        <div id="game-reaction" class="mini-game hidden">
+          <div class="reaction-box" id="reaction-box">
+            <div id="reaction-text">Click to Start!</div>
+            <div id="reaction-result"></div>
+          </div>
+          <div class="reaction-scores">
+            <span>Last: <strong id="reaction-last">—</strong></span>
+            <span>Best: <strong id="reaction-best">—</strong></span>
+            <span>Avg: <strong id="reaction-avg">—</strong></span>
+          </div>
+        </div>
+
+        <!-- MEMORY MATCH -->
+        <div id="game-memory" class="mini-game hidden">
+          <div class="game-hud">
+            <span>Moves: <strong id="mem-moves">0</strong></span>
+            <span>Pairs: <strong id="mem-pairs">0</strong>/8</span>
+            <button id="mem-restart" class="btn btn-primary small">New Game</button>
+          </div>
+          <div id="memory-grid" class="memory-grid"></div>
+        </div>
+
+        <!-- DODGE -->
+        <div id="game-dodge" class="mini-game hidden">
+          <div class="game-hud">
+            <span>Score: <strong id="dodge-score">0</strong></span>
+            <span>High Score: <strong id="dodge-hi">0</strong></span>
+          </div>
+          <canvas id="dodge-canvas" width="400" height="400"></canvas>
+          <p class="game-hint">Move mouse or touch to dodge!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="pixel-text footer-name">PAOLO SABANEKH</p>
+      <p>8th Grade · The Village School · Age 14</p>
+      <p class="footer-secret">💡 Secret: Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> to open the customizer!</p>
+      <p class="footer-copy">© 2026 Paolo Sabanekh. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════ SCRIPTS -->
+  <script src="assets/script.js"></script>
+</body>
+</html>
